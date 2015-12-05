@@ -1,0 +1,17 @@
+{
+  "name": "amapk",
+  "version": "0.0.1",
+  "homepage": "http://pro-happykiller.rhcloud.com/AMAK/",
+  "authors": ["Fabrice Rosito <fabrice.rosito@gmail.com>"],
+  "description": "Service de gestion de'AMAP",
+  "keywords": ["amap"],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules"
+  ],
+  "dependencies": {
+    "Oda" : "*"
+  }
+}
