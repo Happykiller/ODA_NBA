@@ -40,7 +40,15 @@
                 $.Oda.Router.addRoute("home", {
                     "path" : "partials/home.html",
                     "title" : "oda-main.home-title",
-                    "urls" : ["","home"]
+                    "urls" : ["","home"],
+                    "middleWares":["support","auth"]
+                });
+
+                $.Oda.Router.addRoute("match", {
+                    "path" : "partials/match.html",
+                    "title" : "match.title",
+                    "urls" : ["match"],
+                    "middleWares" : ["support","auth"]
                 });
 
                 $.Oda.Router.startRooter();
