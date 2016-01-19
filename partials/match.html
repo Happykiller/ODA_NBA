@@ -1,42 +1,53 @@
-<div class="container">
-    <div class="row" style="background-color: rgba(0, 128, 0, 0.51)">
-        <div class="text-left col-xs-4">
-            <button type="button" class="btn btn-warning btn-lg"><b>2</b> (1)</button>
-            <button type="button" class="btn btn-warning btn-lg"><b>3</b> (1)</button>
-            <button type="button" class="btn btn-warning btn-lg"><b>1</b> (1)</button>
-        </div>
-
-        <div class="text-center col-xs-4">
-            <div>
-                <h2><b>0 - Machin</b></h2> <button type="button" class="btn btn-danger btn-lg">Faute (1)</button>
-            </div>
-        </div>
-
-        <div class="text-right col-xs-4">
-            <button type="button" class="btn btn-success btn-lg">(1) <b>1</b></button>
-            <button type="button" class="btn btn-success btn-lg">(1) <b>3</b></button>
-            <button type="button" class="btn btn-success btn-lg">(1) <b>2</b></button>
-        </div>
+<div class="oda-container" style="background-color: rgba(0, 128, 0, 0.51);margin-bottom: 10px;" id="containerTeamA">
+    <div class="child">
+        <button type="button" class="btn btn-warning btn-lg"><b>2</b> (<span id="teamATwoMissing">teamATwoMissing</span>)</button>
+        <button type="button" class="btn btn-warning btn-lg"><b>3</b> (<span id="teamATreeMissing">teamATreeMissing</span>)</button>
+        <button type="button" class="btn btn-warning btn-lg"><b>1</b> (<span id="teamAOneMissing">teamAOneMissing</span>)</button>
     </div>
-    <hr/>
-    <div class="row" style="background-color: rgba(0, 0, 255, 0.51);">
-        <div class="text-left col-xs-4">
-            <button type="button" class="btn btn-warning btn-lg"><b>2</b> (1)</button>
-            <button type="button" class="btn btn-warning btn-lg"><b>3</b> (1)</button>
-            <button type="button" class="btn btn-warning btn-lg"><b>1</b> (1)</button>
-        </div>
 
-        <div class="text-center col-xs-4">
-            <div>
-                <button type="button" class="btn btn-danger btn-lg">Faute (1)</button>
-                <h2><b>Machin - 0</b></h2>
-            </div>
-        </div>
+    <div class="child">
+        <h2><b><span id="teamAScore">teamAScore</span> - <span id="teamALabel">teamA</span></b></h2>
+        <button type="button" class="btn btn-danger btn-lg">Faute (<span id="teamAFault">teamAFault</span>)</button>
+    </div>
 
-        <div class="text-right col-xs-4">
-            <button type="button" class="btn btn-success btn-lg">(1) <b>1</b></button>
-            <button type="button" class="btn btn-success btn-lg">(1) <b>3</b></button>
-            <button type="button" class="btn btn-success btn-lg">(1) <b>2</b></button>
-        </div>
+    <div class="child">
+        <button type="button" class="btn btn-success btn-lg">(<span id="teamATwoSuccess">teamATwoSuccess</span>) <b>1</b></button>
+        <button type="button" class="btn btn-success btn-lg">(<span id="teamATreeSuccess">teamATreeSuccess</span>) <b>3</b></button>
+        <button type="button" class="btn btn-success btn-lg">(<span id="teamAOneSuccess">teamAOneSuccess</span>) <b>2</b></button>
     </div>
 </div>
+<div class="oda-container" style="background-color: rgba(0, 0, 255, 0.51);margin-bottom: 10px;">
+    <div class="child">
+        <button type="button" class="btn btn-warning btn-lg"><b>2</b> (<span id="teamBTwoMissing">teamBTwoMissing</span>)</button>
+        <button type="button" class="btn btn-warning btn-lg"><b>3</b> (<span id="teamBTreeMissing">teamBTreeMissing</span>)</button>
+        <button type="button" class="btn btn-warning btn-lg"><b>1</b> (<span id="teamBOneMissing">teamBOneMissing</span>)</button>
+    </div>
+    <div class="child">
+        <button type="button" class="btn btn-danger btn-lg">Faute (<span id="teamBFault">teamBFault</span>)</button>
+        <h2><b><span id="teamBLabel">teamBLabel</span> - <span id="teamBScore">teamBScore</span></b></h2>
+    </div>
+    <div class="child">
+        <button type="button" class="btn btn-success btn-lg">(<span id="teamBTwoSuccess">teamBTwoSuccess</span>) <b>1</b></button>
+        <button type="button" class="btn btn-success btn-lg">(<span id="teamBTreeSuccess">teamBTreeSuccess</span>) <b>3</b></button>
+        <button type="button" class="btn btn-success btn-lg">(<span id="teamBOneSuccess">teamBOneSuccess</span>) <b>2</b></button>
+    </div>
+</div>
+<div style="text-align: center;">
+    <button type="button" class="btn btn-default" title="resize" onclick="$.Oda.App.Controller.MatchLive.resize()"><span class="glyphicon glyphicon-resize-full" aria-hidden="true" id="resize"></span></button>
+</div>
+
+<style>
+    .oda-container {
+        display: table;
+        width: 100%;
+    }
+    .child {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+    }
+</style>
+
+<script>
+    $.Oda.App.Controller.MatchLive.start();
+</script>

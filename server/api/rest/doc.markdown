@@ -1,8 +1,19 @@
 # Routes
 
-## a route
+## Match
 
-* `/entity/:id`
+* `/match/`
+    * type : GET
+* `/match/:id`
+    * type : GET
+* `/match/`
     * type : POST
-    * mandatory params : "param"
+    * mandatory params : "teamA","teamB"
+    * public : false
+* `/match/:id/report/recap/`
+    * type : GET
+* `/match/event/`
+    * type : POST
+    * mandatory params : "matchId","team"
+    * optional params : "twoMissing","twoSuccess","treeMissing","treeSuccess","oneMissing","oneSuccess","fault"
     * public : false
