@@ -21,7 +21,17 @@ class MatchInterface extends OdaRestInterface {
     function getAll() {
         try {
             $params = new OdaPrepareReqSql();
-            $params->sql = "SELECT a.`id`, a.`teamA`, a.`teamB`, a.`date`
+            $params->sql = "SELECT a.`id`, a.`teamA`, a.`teamB`, a.`date`,
+                (SELECT IFNULL((SUM(b.`twoSuccess`)*2 + SUM(b.`treeSuccess`)*3 + SUM(b.`oneSuccess`)),0)
+                FROM `tab_match_events` b
+                WHERE 1=1
+                AND b.`matchId` = a.`id`
+                AND b.`team` = 'a') as 'scoreA',
+                (SELECT IFNULL((SUM(c.`twoSuccess`)*2 + SUM(c.`treeSuccess`)*3 + SUM(c.`oneSuccess`)),0)
+                FROM `tab_match_events` c
+                WHERE 1=1
+                AND c.`matchId` = a.`id`
+                AND c.`team` = 'b') as 'scoreB'
                 FROM `tab_matchs` a
                 WHERE 1=1
                 ORDER BY a.`id` DESC
@@ -148,14 +158,14 @@ class MatchInterface extends OdaRestInterface {
      */
     function getRecapForMatch($matchId) {
         try {
-            $sql = "SELECT SUM(a.`twoMissing`) as 'countTwoMissing',
-                SUM(a.`twoSuccess`) as 'countTwoSuccess',
-                SUM(a.`treeMissing`) as 'countTreeMissing',
-                SUM(a.`treeSuccess`) as 'countTreeSuccess',
-                SUM(a.`oneMissing`) as 'countOneMissing',
-                SUM(a.`oneSuccess`) as 'countOneSuccess',
-                SUM(a.`fault`) as 'countFault',
-                (SUM(a.`twoSuccess`)*2 + SUM(a.`treeSuccess`)*3 + SUM(a.`oneSuccess`)) as 'score'
+            $sql = "SELECT IFNULL(SUM(a.`twoMissing`),0) as 'countTwoMissing',
+                IFNULL(SUM(a.`twoSuccess`),0) as 'countTwoSuccess',
+                IFNULL(SUM(a.`treeMissing`),0) as 'countTreeMissing',
+                IFNULL(SUM(a.`treeSuccess`),0) as 'countTreeSuccess',
+                IFNULL(SUM(a.`oneMissing`),0) as 'countOneMissing',
+                IFNULL(SUM(a.`oneSuccess`),0) as 'countOneSuccess',
+                IFNULL(SUM(a.`fault`),0) as 'countFault',
+                IFNULL((SUM(a.`twoSuccess`)*2 + SUM(a.`treeSuccess`)*3 + SUM(a.`oneSuccess`)),0) as 'score'
                 FROM `tab_match_events` a
                 WHERE 1=1
                 AND a.`matchId` = :matchId

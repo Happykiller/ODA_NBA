@@ -18,5 +18,11 @@
     "en" : {
       "title" : "Match"
     }
+  },
+  {
+    "groupName" : "matchLive",
+    "fr" : {
+      "select" : "Selectionner"
+    }
   }
 ]

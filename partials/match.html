@@ -1,53 +1,25 @@
-<div class="oda-container" style="background-color: rgba(0, 128, 0, 0.51);margin-bottom: 10px;" id="containerTeamA">
-    <div class="child">
-        <button type="button" class="btn btn-warning btn-lg"><b>2</b> (<span id="teamATwoMissing">teamATwoMissing</span>)</button>
-        <button type="button" class="btn btn-warning btn-lg"><b>3</b> (<span id="teamATreeMissing">teamATreeMissing</span>)</button>
-        <button type="button" class="btn btn-warning btn-lg"><b>1</b> (<span id="teamAOneMissing">teamAOneMissing</span>)</button>
-    </div>
-
-    <div class="child">
-        <h2><b><span id="teamAScore">teamAScore</span> - <span id="teamALabel">teamA</span></b></h2>
-        <button type="button" class="btn btn-danger btn-lg">Faute (<span id="teamAFault">teamAFault</span>)</button>
-    </div>
-
-    <div class="child">
-        <button type="button" class="btn btn-success btn-lg">(<span id="teamATwoSuccess">teamATwoSuccess</span>) <b>1</b></button>
-        <button type="button" class="btn btn-success btn-lg">(<span id="teamATreeSuccess">teamATreeSuccess</span>) <b>3</b></button>
-        <button type="button" class="btn btn-success btn-lg">(<span id="teamAOneSuccess">teamAOneSuccess</span>) <b>2</b></button>
-    </div>
+<div id="divMatchs">
+    <oda-loading></oda-loading>
 </div>
-<div class="oda-container" style="background-color: rgba(0, 0, 255, 0.51);margin-bottom: 10px;">
-    <div class="child">
-        <button type="button" class="btn btn-warning btn-lg"><b>2</b> (<span id="teamBTwoMissing">teamBTwoMissing</span>)</button>
-        <button type="button" class="btn btn-warning btn-lg"><b>3</b> (<span id="teamBTreeMissing">teamBTreeMissing</span>)</button>
-        <button type="button" class="btn btn-warning btn-lg"><b>1</b> (<span id="teamBOneMissing">teamBOneMissing</span>)</button>
-    </div>
-    <div class="child">
-        <button type="button" class="btn btn-danger btn-lg">Faute (<span id="teamBFault">teamBFault</span>)</button>
-        <h2><b><span id="teamBLabel">teamBLabel</span> - <span id="teamBScore">teamBScore</span></b></h2>
-    </div>
-    <div class="child">
-        <button type="button" class="btn btn-success btn-lg">(<span id="teamBTwoSuccess">teamBTwoSuccess</span>) <b>1</b></button>
-        <button type="button" class="btn btn-success btn-lg">(<span id="teamBTreeSuccess">teamBTreeSuccess</span>) <b>3</b></button>
-        <button type="button" class="btn btn-success btn-lg">(<span id="teamBOneSuccess">teamBOneSuccess</span>) <b>2</b></button>
-    </div>
-</div>
-<div style="text-align: center;">
-    <button type="button" class="btn btn-default" title="resize" onclick="$.Oda.App.Controller.MatchLive.resize()"><span class="glyphicon glyphicon-resize-full" aria-hidden="true" id="resize"></span></button>
-</div>
+<button type="button" oda-label="oda-main.new" onclick="$.Oda.App.Controller.Match.formMatch();" class="btn btn-primary">oda-main.new</button>
 
-<style>
-    .oda-container {
-        display: table;
-        width: 100%;
-    }
-    .child {
-        display: table-cell;
-        vertical-align: middle;
-        text-align: center;
-    }
-</style>
+<script id="formMatch" type="text/template">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="teamA" oda-label="match.teamA">match.teamA</label>
+                <input required type="text" class="form-control" oda-input-text="teamA" oda-input-text-tips="match.teamA-tips" oda-input-text-placeholder="match.teamA-placeholder" oda-input-text-check="Oda.Regexs:noInjection">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="teamB" oda-label="match.teamB">match.teamB</label>
+                <input required type="text" class="form-control" oda-input-text="teamB" oda-input-text-tips="match.teamB-tips" oda-input-text-placeholder="match.teamB-placeholder" oda-input-text-check="Oda.Regexs:noInjection">
+            </div>
+        </div>
+    </div>
+</script>
 
 <script>
-    $.Oda.App.Controller.MatchLive.start();
+    $.Oda.App.Controller.Match.start();
 </script>

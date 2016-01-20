@@ -1,0 +1,53 @@
+<div class="oda-container" style="background-color: rgba(0, 128, 0, 0.51);margin-bottom: 10px;" id="containerTeamA">
+    <div class="child">
+        <button type="button" class="btn btn-warning btn-lg" id="btTeamATwoMissing" onclick="$.Oda.App.Controller.MatchLive.updateMatch({twoMissing: 1, team: 'a'})"><b>2</b> (<span id="teamATwoMissing">teamATwoMissing</span>)</button>
+        <button type="button" class="btn btn-warning btn-lg" id="btTeamATreeMissing" onclick="$.Oda.App.Controller.MatchLive.updateMatch({treeMissing: 1, team: 'a'})"><b>3</b> (<span id="teamATreeMissing">teamATreeMissing</span>)</button>
+        <button type="button" class="btn btn-warning btn-lg" id="btTeamAOneMissing" onclick="$.Oda.App.Controller.MatchLive.updateMatch({oneMissing: 1, team: 'a'})"><b>1</b> (<span id="teamAOneMissing">teamAOneMissing</span>)</button>
+    </div>
+
+    <div class="child">
+        <h2><b><span id="teamAScore">teamAScore</span> - <span id="teamALabel">teamA</span></b></h2>
+        <button type="button" class="btn btn-danger btn-lg" id="btTeamAFault" onclick="$.Oda.App.Controller.MatchLive.updateMatch({fault: 1, team: 'a'})">Faute (<span id="teamAFault">teamAFault</span>)</button>
+    </div>
+
+    <div class="child">
+        <button type="button" class="btn btn-success btn-lg" id="btTeamAOneSuccess" onclick="$.Oda.App.Controller.MatchLive.updateMatch({oneSuccess: 1, team: 'a'})">(<span id="teamAOneSuccess">teamAOneSuccess</span>) <b>1</b></button>
+        <button type="button" class="btn btn-success btn-lg" id="btTeamATreeSuccess" onclick="$.Oda.App.Controller.MatchLive.updateMatch({treeSuccess: 1, team: 'a'})">(<span id="teamATreeSuccess">teamATreeSuccess</span>) <b>3</b></button>
+        <button type="button" class="btn btn-success btn-lg" id="btTeamATwoSuccess" onclick="$.Oda.App.Controller.MatchLive.updateMatch({twoSuccess: 1, team: 'a'})">(<span id="teamATwoSuccess">teamATwoSuccess</span>) <b>2</b></button>
+    </div>
+</div>
+<div class="oda-container" style="background-color: rgba(0, 0, 255, 0.51);margin-bottom: 10px;">
+    <div class="child">
+        <button type="button" class="btn btn-warning btn-lg" id="btTeamBTwoMissing" onclick="$.Oda.App.Controller.MatchLive.updateMatch({twoMissing: 1, team: 'b'})"><b>2</b> (<span id="teamBTwoMissing">teamBTwoMissing</span>)</button>
+        <button type="button" class="btn btn-warning btn-lg" id="btTeamBTreeMissing" onclick="$.Oda.App.Controller.MatchLive.updateMatch({treeMissing: 1, team: 'b'})"><b>3</b> (<span id="teamBTreeMissing">teamBTreeMissing</span>)</button>
+        <button type="button" class="btn btn-warning btn-lg" id="btTeamBOneMissing" onclick="$.Oda.App.Controller.MatchLive.updateMatch({oneMissing: 1, team: 'b'})"><b>1</b> (<span id="teamBOneMissing">teamBOneMissing</span>)</button>
+    </div>
+    <div class="child">
+        <button type="button" class="btn btn-danger btn-lg" id="btTeamBFault" onclick="$.Oda.App.Controller.MatchLive.updateMatch({fault: 1, team: 'b'})">Faute (<span id="teamBFault">teamBFault</span>)</button>
+        <h2><b><span id="teamBLabel">teamBLabel</span> - <span id="teamBScore">teamBScore</span></b></h2>
+    </div>
+    <div class="child">
+        <button type="button" class="btn btn-success btn-lg" id="btTeamBOneSuccess" onclick="$.Oda.App.Controller.MatchLive.updateMatch({oneSuccess: 1, team: 'b'})">(<span id="teamBOneSuccess">teamBOneSuccess</span>) <b>1</b></button>
+        <button type="button" class="btn btn-success btn-lg" id="btTeamBTreeSuccess" onclick="$.Oda.App.Controller.MatchLive.updateMatch({treeSuccess: 1, team: 'b'})">(<span id="teamBTreeSuccess">teamBTreeSuccess</span>) <b>3</b></button>
+        <button type="button" class="btn btn-success btn-lg" id="btTeamBTwoSuccess" onclick="$.Oda.App.Controller.MatchLive.updateMatch({TwoSuccess: 1, team: 'b'})">(<span id="teamBTwoSuccess">teamBTwoSuccess</span>) <b>2</b></button>
+    </div>
+</div>
+<div style="text-align: center;">
+    <button type="button" class="btn btn-default" title="resize" onclick="$.Oda.App.Controller.MatchLive.resize()"><span class="glyphicon glyphicon-resize-full" aria-hidden="true" id="resize"></span></button>
+</div>
+
+<style>
+    .oda-container {
+        display: table;
+        width: 100%;
+    }
+    .child {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+    }
+</style>
+
+<script>
+    $.Oda.App.Controller.MatchLive.start();
+</script>
