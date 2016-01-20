@@ -13,7 +13,10 @@
   {
     "groupName" : "match",
     "fr" : {
-      "title" : "Match"
+      "title" : "Match",
+      "teamA": "TeamA",
+      "teamB": "TeamB",
+      "createMatch": "Créer un match"
     },
     "en" : {
       "title" : "Match"
