@@ -70,5 +70,13 @@ $slim->post('/match/event/', function () use ($slim) {
     $INTERFACE->createEvent();
 });
 
+$slim->delete('/match/:id/event/', function ($id) use ($slim) {
+    $params = new OdaPrepareInterface();
+    $params->modePublic = false;
+    $params->slim = $slim;
+    $INTERFACE = new MatchInterface($params);
+    $INTERFACE->undoEvent($id);
+});
+
 //--------------------------------------------------------------------------
 $slim->run();

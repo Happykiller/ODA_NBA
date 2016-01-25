@@ -156,6 +156,33 @@ class MatchInterface extends OdaRestInterface {
     /**
      * @param $matchId
      */
+    function undoEvent($matchId) {
+        try {
+            $params = new OdaPrepareReqSql();
+            $params->sql = "DELETE FROM `tab_match_events`
+              WHERE matchId = :matchId
+              ORDER BY id DESC
+              LIMIT 1
+            ;";
+            $params->bindsValue = [
+                "matchId" => $matchId
+            ];
+            $params->typeSQL = OdaLibBd::SQL_SCRIPT;
+            $retour = $this->BD_ENGINE->reqODASQL($params);
+
+            $params = new stdClass();
+            $params->value = $retour->data;
+            $this->addDataStr($params);
+        } catch (Exception $ex) {
+            $this->object_retour->strErreur = $ex.'';
+            $this->object_retour->statut = self::STATE_ERROR;
+            die();
+        }
+    }
+
+    /**
+     * @param $matchId
+     */
     function getRecapForMatch($matchId) {
         try {
             $sql = "SELECT IFNULL(SUM(a.`twoMissing`),0) as 'countTwoMissing',

@@ -17,3 +17,6 @@
     * mandatory params : "matchId","team"
     * optional params : "twoMissing","twoSuccess","treeMissing","treeSuccess","oneMissing","oneSuccess","fault"
     * public : false
+* `/match/:id/event/`
+    * type : DELETE
+    * public : false

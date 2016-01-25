@@ -299,6 +299,20 @@
                         return null;
                     }
                 },
+                /**
+                 * @returns {$.Oda.App.Controller.MatchLive}
+                 */
+                undo : function () {
+                    try {
+                        var call = $.Oda.Interface.callRest($.Oda.Context.rest+"api/rest/match/"+this.currentMatchId+"/event/", {type: 'DELETE', callback: function(response){
+                            $.Oda.App.Controller.MatchLive.displayMatch();
+                        }});
+                        return this;
+                    } catch (er) {
+                        $.Oda.Log.error("$.Oda.App.Controller.MatchLive.undo : " + er.message);
+                        return null;
+                    }
+                },
             }
         }
 
