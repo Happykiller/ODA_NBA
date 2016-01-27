@@ -22,6 +22,71 @@
     </div>
 </script>
 
+
+
+<script id="templateStats" type="text/template">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Stat</th>
+                    <th colspan="3" style="text-align: center;">{{teamA}}</th>
+                    <th colspan="3" style="text-align: center;">{{teamB}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1pts</td>
+                        <td style="text-align: center;" id="teamARecap1"></td>
+                        <td style="text-align: center;" id="teamAPerc1"></td>
+                        <td style="text-align: center;" id="teamAPt1"></td>
+                        <td style="text-align: center;" id="teamBPt1"></td>
+                        <td style="text-align: center;" id="teamBPerc1"></td>
+                        <td style="text-align: center;" id="teamBRecap1"></td>
+                    </tr>
+                    <tr>
+                        <td>2pts</td>
+                        <td style="text-align: center;" id="teamARecap2"></td>
+                        <td style="text-align: center;" id="teamAPerc2"></td>
+                        <td style="text-align: center;" id="teamAPt2"></td>
+                        <td style="text-align: center;" id="teamBPt2"></td>
+                        <td style="text-align: center;" id="teamBPerc2"></td>
+                        <td style="text-align: center;" id="teamBRecap2"></td>
+                    </tr>
+                    <tr>
+                        <td>3pts</td>
+                        <td style="text-align: center;" id="teamARecap3"></td>
+                        <td style="text-align: center;" id="teamAPerc3"></td>
+                        <td style="text-align: center;" id="teamAPt3"></td>
+                        <td style="text-align: center;" id="teamBPt3"></td>
+                        <td style="text-align: center;" id="teamBPerc3"></td>
+                        <td style="text-align: center;" id="teamBRecap3"></td>
+                    </tr>
+                    <tr>
+                        <td>fault</td>
+                        <td style="text-align: center;" id="teamARecapFault"></td>
+                        <td style="text-align: center;" id="teamAPercFault"></td>
+                        <td style="text-align: center;" id="teamAFault"></td>
+                        <td style="text-align: center;" id="teamBFault"></td>
+                        <td style="text-align: center;" id="teamBPercFault"></td>
+                        <td style="text-align: center;" id="teamBRecapFault"></td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td style="text-align: center;" id="teamARecapTotal"></td>
+                        <td style="text-align: center;" id="teamAPercTotal"></td>
+                        <td style="text-align: center;font-weight: bold;" id="teamATotal"></td>
+                        <td style="text-align: center;font-weight: bold;" id="teamBTotal"></td>
+                        <td style="text-align: center;" id="teamBPercTotal"></td>
+                        <td style="text-align: center;" id="teamBRecapTotal"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+
 <script>
     $.Oda.App.Controller.Match.start();
 </script>
