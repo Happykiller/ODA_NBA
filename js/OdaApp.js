@@ -414,7 +414,7 @@
                                     var teamATotal = teamAOneSuccess + teamATwoSuccess*2 + teamATreeSuccess*3;
                                     var teamBTotal = teamBOneSuccess + teamBTwoSuccess*2 + teamBTreeSuccess*3;
                                     $('#teamAPercTotal').html(teamAPercTotal + '%');
-                                    $('#teamARecapTotal').html(teamATotal);
+                                    $('#teamARecapTotal').html(teamATotal+'/'+(teamBTotalSuccess + teamBTotalMissing));
                                     $('#teamATotal').html(teamAOneSuccess + teamATwoSuccess*2 + teamATreeSuccess*3);
                                     $('#teamBPercTotal').html(teamBPercTotal + '%');
                                     $('#teamBRecapTotal').html(teamBTotalSuccess+'/'+(teamBTotalSuccess + teamBTotalMissing));
@@ -430,7 +430,7 @@
                                     if(teamAPercTotal > teamBPercTotal){
                                         $('#teamAPercTotal').addClass('statWinner');
                                         $('#teamBPercTotal').addClass('statLooser');
-                                    }else if(teamAPercTotal < teamAPercTotal){
+                                    }else if(teamAPercTotal < teamBPercTotal){
                                         $('#teamBPercTotal').addClass('statWinner');
                                         $('#teamAPercTotal').addClass('statLooser');
                                     }
