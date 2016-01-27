@@ -414,7 +414,7 @@
                                     var teamATotal = teamAOneSuccess + teamATwoSuccess*2 + teamATreeSuccess*3;
                                     var teamBTotal = teamBOneSuccess + teamBTwoSuccess*2 + teamBTreeSuccess*3;
                                     $('#teamAPercTotal').html(teamAPercTotal + '%');
-                                    $('#teamARecapTotal').html(teamATotal+'/'+(teamBTotalSuccess + teamBTotalMissing));
+                                    $('#teamARecapTotal').html(teamATotalSuccess+'/'+(teamATotalSuccess + teamATotalMissing));
                                     $('#teamATotal').html(teamAOneSuccess + teamATwoSuccess*2 + teamATreeSuccess*3);
                                     $('#teamBPercTotal').html(teamBPercTotal + '%');
                                     $('#teamBRecapTotal').html(teamBTotalSuccess+'/'+(teamBTotalSuccess + teamBTotalMissing));
