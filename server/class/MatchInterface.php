@@ -21,7 +21,7 @@ class MatchInterface extends OdaRestInterface {
     function getAll() {
         try {
             $params = new OdaPrepareReqSql();
-            $params->sql = "SELECT a.`id`, a.`teamA`, a.`teamB`, a.`date`,
+            $params->sql = "SELECT a.`id`, a.`teamA`, a.`colorA`, a.`teamB`, a.`colorB`, a.`date`,
                 (SELECT IFNULL((SUM(b.`twoSuccess`)*2 + SUM(b.`treeSuccess`)*3 + SUM(b.`oneSuccess`)),0)
                 FROM `tab_match_events` b
                 WHERE 1=1
@@ -58,7 +58,7 @@ class MatchInterface extends OdaRestInterface {
     function get($id) {
         try {
             $params = new OdaPrepareReqSql();
-            $params->sql = "SELECT a.`id`, a.`teamA`, a.`teamB`, a.`date`
+            $params->sql = "SELECT a.`id`, a.`teamA`, a.`colorA`, a.`teamB`, a.`colorB`, a.`date`
                 FROM `tab_matchs` a
                 WHERE 1=1
                 AND a.`id` = :id
@@ -83,17 +83,21 @@ class MatchInterface extends OdaRestInterface {
         try {
             $params = new OdaPrepareReqSql();
             $params->sql = "INSERT INTO `tab_matchs` (
-                    `teamA` ,
+                    `teamA`,
+                    `colorA`,
                     `teamB`,
+                    `colorB`,
                     `date`
                 )
                 VALUES (
-                    :teamA, :teamB, NOW()
+                    :teamA, :colorA, :teamB, :colorB, NOW()
                 )
             ;";
             $params->bindsValue = [
                 "teamA" => $this->inputs["teamA"],
-                "teamB" => $this->inputs["teamB"]
+                "colorA" => $this->inputs["colorA"],
+                "teamB" => $this->inputs["teamB"],
+                "colorB" => $this->inputs["colorB"]
             ];
             $params->typeSQL = OdaLibBd::SQL_INSERT_ONE;
             $retour = $this->BD_ENGINE->reqODASQL($params);

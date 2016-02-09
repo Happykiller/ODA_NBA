@@ -8,7 +8,7 @@
     * type : GET
 * `/match/`
     * type : POST
-    * mandatory params : "teamA","teamB"
+    * mandatory params : "teamA", "colorA", "teamB", "colorB"
     * public : false
 * `/match/:id/report/recap/`
     * type : GET

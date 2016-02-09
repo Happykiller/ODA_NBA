@@ -84,6 +84,7 @@
                                 attribute: [
                                     {
                                         header: "Date",
+                                        align: 'center',
                                         value: function(data, type, full, meta, row){
                                             if(type === 'display'){
                                                 return $.Oda.Date.getStrDateTimeFrFromUs(row.date);
@@ -94,42 +95,52 @@
                                     },
                                     {
                                         header: "TeamA",
-                                        align: 'right',
+                                        align: 'center',
                                         value: function(data, type, full, meta, row){
                                             var strHtml = row.teamA;
                                             if(parseInt(row.scoreA) > parseInt(row.scoreB)){
-                                                strHtml = '<div style="font-weight: bold">'+row.teamA+'</div>';
+                                                strHtml = '<div style="font-weight: bold" class="bg-'+row.colorA+'">'+row.teamA+'</div>';
+                                            }else{
+                                                strHtml = '<div class="bg-'+row.colorA+'">'+row.teamA+'</div>';
                                             }
                                             return strHtml;
                                         }
                                     },
                                     {
                                         header: "ScoreA",
-                                        align: 'right',
+                                        align: 'center',
                                         value: function(data, type, full, meta, row){
                                             var strHtml = row.scoreA;
                                             if(parseInt(row.scoreA) > parseInt(row.scoreB)){
-                                                strHtml = '<div style="font-weight: bold">'+row.scoreA+'</div>';
+                                                strHtml = '<div style="font-weight: bold" class="bg-'+row.colorA+'">'+row.scoreA+'</div>';
+                                            }else{
+                                                strHtml = '<div class="bg-'+row.colorA+'">'+row.scoreA+'</div>';
                                             }
                                             return strHtml;
                                         }
                                     },
                                     {
                                         header: "ScoreB",
+                                        align: 'center',
                                         value: function(data, type, full, meta, row){
                                             var strHtml = row.scoreB;
                                             if(parseInt(row.scoreB) > parseInt(row.scoreA)){
-                                                strHtml = '<div style="font-weight: bold">'+row.scoreB+'</div>';
+                                                strHtml = '<div style="font-weight: bold" class="bg-'+row.colorB+'">'+row.scoreB+'</div>';
+                                            }else{
+                                                strHtml = '<div class="bg-'+row.colorB+'">'+row.teamB+'</div>';
                                             }
                                             return strHtml;
                                         }
                                     },
                                     {
                                         header: "TeamB",
+                                        align: 'center',
                                         value: function(data, type, full, meta, row){
                                             var strHtml = row.teamB;
                                             if(parseInt(row.scoreB) > parseInt(row.scoreA)){
-                                                strHtml = '<div style="font-weight: bold">'+row.teamB+'</div>';
+                                                strHtml = '<div style="font-weight: bold" class="bg-'+row.colorB+'">'+row.teamB+'</div>';
+                                            }else{
+                                                strHtml = '<div class="bg-'+row.colorB+'">'+row.scoreB+'</div>';
                                             }
                                             return strHtml;
                                         }
@@ -160,36 +171,42 @@
                                 attribute: [
                                     {
                                         header: "Id",
+                                        align: 'center',
                                         value: function(data, type, full, meta, row){
                                             return row.id;
                                         }
                                     },
                                     {
                                         header: "TeamA",
+                                        align: 'center',
                                         value: function(data, type, full, meta, row){
-                                            return row.teamA;
+                                            return '<div class="bg-'+row.colorA+'">'+row.teamA+'</div>';
                                         }
                                     },
                                     {
                                         header: "ScoreA",
+                                        align: 'center',
                                         value: function(data, type, full, meta, row){
-                                            return row.scoreA;
+                                            return '<div class="bg-'+row.colorA+'">'+row.scoreA+'</div>';
                                         }
                                     },
                                     {
                                         header: "TeamB",
+                                        align: 'center',
                                         value: function(data, type, full, meta, row){
-                                            return row.teamB;
+                                            return '<div class="bg-'+row.colorB+'">'+row.teamB+'</div>';
                                         }
                                     },
                                     {
                                         header: "ScoreB",
+                                        align: 'center',
                                         value: function(data, type, full, meta, row){
-                                            return row.scoreB;
+                                            return '<div class="bg-'+row.colorB+'">'+row.scoreB+'</div>';
                                         }
                                     },
                                     {
                                         header: "Date",
+                                        align: 'center',
                                         value: function(data, type, full, meta, row){
                                             if(type === 'display'){
                                                 return $.Oda.Date.getStrDateTimeFrFromUs(row.date);
@@ -200,9 +217,10 @@
                                     },
                                     {
                                         header: "Action",
+                                        align: 'center',
                                         value: function(data, type, full, meta, row){
                                             var strHtml = '<a onclick="$.Oda.Router.navigateTo({route:\'matchLive\',args:{id:'+row.id+'}});" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open"></span></a>';
-                                            strHtml += ' <a onclick="$.Oda.App.Controller.Match.seeStats({id: '+row.id+', date: \''+row.date+'\', teamA: \''+row.teamA+'\', teamB: \''+row.teamB+'\'});" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-stats"></span></a>';
+                                            strHtml += ' <a onclick="$.Oda.App.Controller.Match.seeStats({id: '+row.id+', date: \''+row.date+'\', teamA: \''+row.teamA+'\', colorA: \''+row.colorA+'\', teamB: \''+row.teamB+'\', colorB: \''+row.colorB+'\'});" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-stats"></span></a>';
                                             return strHtml;
                                         }
                                     }
@@ -232,6 +250,8 @@
                             "details" : strHtml,
                             "footer" : '<button type="button" oda-label="oda-main.bt-submit" oda-submit="submit" onclick="$.Oda.App.Controller.Match.submitMatch();" class="btn btn-primary disabled" disabled>Submit</button >',
                             "callback" : function(){
+                                $('.selectpicker').selectpicker();
+
                                 $.Oda.Scope.Gardian.add({
                                     id : "createMatch",
                                     listElt : ["teamA","teamB"],
@@ -263,7 +283,9 @@
                             $.Oda.App.Controller.Match.start();
                         }},{
                             teamA: $('#teamA').val(),
-                            teamB: $('#teamB').val()
+                            teamB: $('#teamB').val(),
+                            colorA: $('#colorA').val(),
+                            colorB: $('#colorB').val()
                         });
                         return this;
                     } catch (er) {
@@ -276,7 +298,9 @@
                  * @param p_params.id
                  * @param p_params.date
                  * @param p_params.teamA
+                 * @param p_params.colorA
                  * @param p_params.teamB
+                 * @param p_params.colorB
                  * @returns {$.Oda.App.Controller.Match}
                  */
                 seeStats : function (p_params) {
@@ -285,7 +309,9 @@
                             template : "templateStats"
                             , scope : {
                                 teamA: p_params.teamA,
-                                teamB: p_params.teamB
+                                colorA: p_params.colorA,
+                                teamB: p_params.teamB,
+                                colorB: p_params.colorB
                             }
                         });
 
@@ -295,16 +321,17 @@
                             "details" : strHtml,
                             "callback" : function(){
                                 var call = $.Oda.Interface.callRest($.Oda.Context.rest+"api/rest/match/"+p_params.id+"/report/recap/", {callback : function(response){
+
                                     var teamAOneSuccess = parseInt(response.data.teamA.countOneSuccess);
                                     var teamAOneMissing = parseInt(response.data.teamA.countOneMissing);
-                                    var teamAPerc1 = $.Oda.Tooling.arrondir(teamAOneSuccess / (teamAOneSuccess + teamAOneMissing) * 100,2);
+                                    var teamAPerc1 = ((teamAOneSuccess+teamAOneMissing)===0)?0:$.Oda.Tooling.arrondir(teamAOneSuccess / (teamAOneSuccess + teamAOneMissing) * 100,2);
                                     $('#teamAPerc1').html(teamAPerc1 + '%');
                                     $('#teamARecap1').html(teamAOneSuccess+'/'+(teamAOneSuccess + teamAOneMissing));
                                     $('#teamAPt1').html(teamAOneSuccess);
 
                                     var teamBOneSuccess = parseInt(response.data.teamB.countOneSuccess);
                                     var teamBOneMissing = parseInt(response.data.teamB.countOneMissing);
-                                    var teamBPerc1 = $.Oda.Tooling.arrondir(teamBOneSuccess / (teamBOneSuccess + teamBOneMissing) * 100,2);
+                                    var teamBPerc1 = ((teamBOneSuccess+teamBOneMissing)===0)?0:$.Oda.Tooling.arrondir(teamBOneSuccess / (teamBOneSuccess + teamBOneMissing) * 100,2);
                                     $('#teamBPerc1').html(teamBPerc1 + '%');
                                     $('#teamBRecap1').html(teamBOneSuccess+'/'+(teamBOneSuccess + teamBOneMissing));
                                     $('#teamBPt1').html(teamBOneSuccess);
@@ -326,14 +353,14 @@
 
                                     var teamATwoSuccess = parseInt(response.data.teamA.countTwoSuccess);
                                     var teamATwoMissing = parseInt(response.data.teamA.countTwoMissing);
-                                    var teamAPerc2 = $.Oda.Tooling.arrondir(teamATwoSuccess / (teamATwoSuccess + teamATwoMissing) * 100,2);
+                                    var teamAPerc2 = ((teamATwoSuccess+teamATwoMissing)===0)?0:$.Oda.Tooling.arrondir(teamATwoSuccess / (teamATwoSuccess + teamATwoMissing) * 100,2);
                                     $('#teamAPerc2').html(teamAPerc2 + '%');
                                     $('#teamARecap2').html(teamATwoSuccess+'/'+(teamATwoSuccess + teamATwoMissing));
                                     $('#teamAPt2').html(teamATwoSuccess*2);
 
                                     var teamBTwoSuccess = parseInt(response.data.teamB.countTwoSuccess);
                                     var teamBTwoMissing = parseInt(response.data.teamB.countTwoMissing);
-                                    var teamBPerc2 = $.Oda.Tooling.arrondir(teamBTwoSuccess / (teamBTwoSuccess + teamBTwoMissing) * 100,2);
+                                    var teamBPerc2 = ((teamBTwoSuccess+teamBTwoMissing)===0)?0:$.Oda.Tooling.arrondir(teamBTwoSuccess / (teamBTwoSuccess + teamBTwoMissing) * 100,2);
                                     $('#teamBPerc2').html(teamBPerc2 + '%');
                                     $('#teamBRecap2').html(teamBTwoSuccess+'/'+(teamBTwoSuccess + teamBTwoMissing));
                                     $('#teamBPt2').html(teamBTwoSuccess*2);
@@ -355,14 +382,14 @@
 
                                     var teamATreeSuccess = parseInt(response.data.teamA.countTreeSuccess);
                                     var teamATreeMissing = parseInt(response.data.teamA.countTreeMissing);
-                                    var teamAPerc3 = $.Oda.Tooling.arrondir(teamATreeSuccess / (teamATreeSuccess + teamATreeMissing) * 100,2);
+                                    var teamAPerc3 = ((teamATreeSuccess+teamATreeMissing)===0)?0:$.Oda.Tooling.arrondir(teamATreeSuccess / (teamATreeSuccess + teamATreeMissing) * 100,2);
                                     $('#teamAPerc3').html(teamAPerc3 + '%');
                                     $('#teamARecap3').html(teamATreeSuccess+'/'+(teamATreeSuccess + teamATreeMissing));
                                     $('#teamAPt3').html(teamATreeSuccess*3);
 
                                     var teamBTreeSuccess = parseInt(response.data.teamB.countTreeSuccess);
                                     var teamBTreeMissing = parseInt(response.data.teamB.countTreeMissing);
-                                    var teamBPerc3 = $.Oda.Tooling.arrondir(teamBTreeSuccess / (teamBTreeSuccess + teamBTreeMissing) * 100,2);
+                                    var teamBPerc3 = ((teamATreeSuccess+teamATreeMissing)===0)?0:$.Oda.Tooling.arrondir(teamBTreeSuccess / (teamBTreeSuccess + teamBTreeMissing) * 100,2);
                                     $('#teamBPerc3').html(teamBPerc3 + '%');
                                     $('#teamBRecap3').html(teamBTreeSuccess+'/'+(teamBTreeSuccess + teamBTreeMissing));
                                     $('#teamBPt3').html(teamBTreeSuccess*3);
@@ -384,8 +411,8 @@
 
                                     var teamAFault = parseInt(response.data.teamA.countFault);
                                     var teamBFault = parseInt(response.data.teamB.countFault);
-                                    var teamAPercFault = $.Oda.Tooling.arrondir(teamAFault / (teamAFault + teamBFault) * 100,2);
-                                    var teamBPercFault = $.Oda.Tooling.arrondir(teamBFault / (teamAFault + teamBFault) * 100,2);
+                                    var teamAPercFault = ((teamAFault+teamBFault)===0)?0:$.Oda.Tooling.arrondir(teamAFault / (teamAFault + teamBFault) * 100,2);
+                                    var teamBPercFault = ((teamAFault+teamBFault)===0)?0:$.Oda.Tooling.arrondir(teamBFault / (teamAFault + teamBFault) * 100,2);
                                     $('#teamAPercFault').html(teamAPercFault + '%');
                                     $('#teamARecapFault').html(teamAFault+'/'+(teamAFault + teamBFault));
                                     $('#teamAFault').html(teamAFault);
@@ -409,8 +436,8 @@
                                     var teamATotalMissing = teamAOneMissing + teamATwoMissing + teamATreeMissing;
                                     var teamBTotalSuccess = teamBOneSuccess + teamBTwoSuccess + teamBTreeSuccess;
                                     var teamBTotalMissing = teamBOneMissing + teamBTwoMissing + teamBTreeMissing;
-                                    var teamAPercTotal = $.Oda.Tooling.arrondir(teamATotalSuccess / (teamATotalSuccess + teamATotalMissing) * 100,2);
-                                    var teamBPercTotal = $.Oda.Tooling.arrondir(teamBTotalSuccess / (teamBTotalSuccess + teamBTotalMissing) * 100,2);
+                                    var teamAPercTotal = ((teamATotalSuccess+teamATotalMissing)===0)?0:$.Oda.Tooling.arrondir(teamATotalSuccess / (teamATotalSuccess + teamATotalMissing) * 100,2);
+                                    var teamBPercTotal = ((teamBTotalSuccess+teamBTotalMissing)===0)?0:$.Oda.Tooling.arrondir(teamBTotalSuccess / (teamBTotalSuccess + teamBTotalMissing) * 100,2);
                                     var teamATotal = teamAOneSuccess + teamATwoSuccess*2 + teamATreeSuccess*3;
                                     var teamBTotal = teamBOneSuccess + teamBTwoSuccess*2 + teamBTreeSuccess*3;
                                     $('#teamAPercTotal').html(teamAPercTotal + '%');
@@ -456,6 +483,8 @@
                         var call = $.Oda.Interface.callRest($.Oda.Context.rest+"api/rest/match/"+this.currentMatchId, {callback : function(response){
                             $('#teamALabel').html(response.data.teamA);
                             $('#teamBLabel').html(response.data.teamB);
+                            $('#containerTeamA').addClass('bg-'+response.data.colorA);
+                            $('#containerTeamB').addClass('bg-'+response.data.colorB);
                         }});
                         this.displayMatch();
                         return this;

@@ -46,7 +46,7 @@ $slim->get('/match/:id', function ($id) use ($slim) {
 
 $slim->post('/match/', function () use ($slim) {
     $params = new OdaPrepareInterface();
-    $params->arrayInput = array("teamA","teamB");
+    $params->arrayInput = array("teamA", "colorA", "teamB", "colorB");
     $params->modePublic = false;
     $params->slim = $slim;
     $INTERFACE = new MatchInterface($params);

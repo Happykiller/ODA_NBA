@@ -16,7 +16,8 @@
       "title" : "Match",
       "teamA": "TeamA",
       "teamB": "TeamB",
-      "createMatch": "Créer un match"
+      "createMatch": "Créer un match",
+      "color": "Couleur"
     },
     "en" : {
       "title" : "Match"

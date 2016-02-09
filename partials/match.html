@@ -20,9 +20,62 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="colorA" oda-label="match.color">match.color</label>
+                <select id="colorA" class="selectpicker"><option data-content="<span class='label bg-turquoise'>Turquoise</span>" value="turquoise"></option>
+                    <option data-content="<span class='label bg-emerald'>emerald</span>" value="emerald"></option>
+                    <option data-content="<span class='label bg-peter_river'>peter_river</span>" value="peter_river"></option>
+                    <option data-content="<span class='label bg-amethyst'>amethyst</span>" value="amethyst"></option>
+                    <option data-content="<span class='label bg-wet_asphalt'>wet_asphalt</span>" value="wet_asphalt"></option>
+                    <option data-content="<span class='label bg-green_sea'>green_sea</span>" value="green_sea"></option>
+                    <option data-content="<span class='label bg-nephritis'>nephritis</span>" value="nephritis"></option>
+                    <option data-content="<span class='label bg-belize_hole'>belize_hole</span>" value="belize_hole"></option>
+                    <option data-content="<span class='label bg-wisteria'>wisteria</span>" value="wisteria"></option>
+                    <option data-content="<span class='label bg-midnight_blue'>midnight_blue</span>" value="midnight_blue"></option>
+                    <option data-content="<span class='label bg-sun_flower'>sun_flower</span>" value="sun_flower"></option>
+                    <option data-content="<span class='label bg-carrot'>carrot</span>" value="carrot"></option>
+                    <option data-content="<span class='label bg-alizarin'>alizarin</span>" value="alizarin"></option>
+                    <option data-content="<span class='label bg-clouds'>clouds</span>" value="clouds"></option>
+                    <option data-content="<span class='label bg-concrete'>concrete</span>" value="concrete"></option>
+                    <option data-content="<span class='label bg-orange'>orange</span>" value="orange"></option>
+                    <option data-content="<span class='label bg-pimpkin'>pimpkin</span>" value="pimpkin"></option>
+                    <option data-content="<span class='label bg-pomegranate'>pomegranate</span>" value="pomegranate"></option>
+                    <option data-content="<span class='label bg-sliver'>sliver</span>" value="sliver"></option>
+                    <option data-content="<span class='label bg-asbestos'>asbestos</span>" value="asbestos"></option>
+                </select>
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="colorB" oda-label="match.color">match.color</label>
+                <select id="colorB"  class="selectpicker"><option data-content="<span class='label bg-turquoise'>Turquoise</span>" value="turquoise"></option>
+                    <option data-content="<span class='label bg-emerald'>emerald</span>" value="emerald"></option>
+                    <option data-content="<span class='label bg-peter_river'>peter_river</span>" value="peter_river"></option>
+                    <option data-content="<span class='label bg-amethyst'>amethyst</span>" value="amethyst"></option>
+                    <option data-content="<span class='label bg-wet_asphalt'>wet_asphalt</span>" value="wet_asphalt"></option>
+                    <option data-content="<span class='label bg-green_sea'>green_sea</span>" value="green_sea"></option>
+                    <option data-content="<span class='label bg-nephritis'>nephritis</span>" value="nephritis"></option>
+                    <option data-content="<span class='label bg-belize_hole'>belize_hole</span>" value="belize_hole"></option>
+                    <option data-content="<span class='label bg-wisteria'>wisteria</span>" value="wisteria"></option>
+                    <option data-content="<span class='label bg-midnight_blue'>midnight_blue</span>" value="midnight_blue"></option>
+                    <option data-content="<span class='label bg-sun_flower'>sun_flower</span>" value="sun_flower"></option>
+                    <option data-content="<span class='label bg-carrot'>carrot</span>" value="carrot"></option>
+                    <option data-content="<span class='label bg-alizarin'>alizarin</span>" value="alizarin"></option>
+                    <option data-content="<span class='label bg-clouds'>clouds</span>" value="clouds"></option>
+                    <option data-content="<span class='label bg-concrete'>concrete</span>" value="concrete"></option>
+                    <option data-content="<span class='label bg-orange'>orange</span>" value="orange"></option>
+                    <option data-content="<span class='label bg-pimpkin'>pimpkin</span>" value="pimpkin"></option>
+                    <option data-content="<span class='label bg-pomegranate'>pomegranate</span>" value="pomegranate"></option>
+                    <option data-content="<span class='label bg-sliver'>sliver</span>" value="sliver"></option>
+                    <option data-content="<span class='label bg-asbestos'>asbestos</span>" value="asbestos"></option>
+                </select>
+            </div>
+        </div>
+    </div>
 </script>
-
-
 
 <script id="templateStats" type="text/template">
     <div class="row">
@@ -31,8 +84,8 @@
                 <thead>
                 <tr>
                     <th>Stat</th>
-                    <th colspan="3" style="text-align: center;">{{teamA}}</th>
-                    <th colspan="3" style="text-align: center;">{{teamB}}</th>
+                    <th colspan="3" style="text-align: center;" class="bg-{{colorA}}">{{teamA}}</th>
+                    <th colspan="3" style="text-align: center;" class="bg-{{colorB}}">{{teamB}}</th>
                 </tr>
                 </thead>
                 <tbody>
