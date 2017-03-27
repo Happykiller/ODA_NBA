@@ -409,6 +409,7 @@
                                         $('#teamAPt3').addClass('statLooser');
                                     }
 
+                                    //FAULT
                                     var teamAFault = parseInt(response.data.teamA.countFault);
                                     var teamBFault = parseInt(response.data.teamB.countFault);
                                     var teamAPercFault = ((teamAFault+teamBFault)===0)?0:$.Oda.Tooling.arrondir(teamAFault / (teamAFault + teamBFault) * 100,2);
@@ -430,6 +431,54 @@
                                         $('#teamBPercFault').addClass('statLooser');
                                         $('#teamAFault').addClass('statWinner');
                                         $('#teamBFault').addClass('statLooser');
+                                    }
+
+                                    //STEAL
+                                    var teamASteal = parseInt(response.data.teamA.countSteal);
+                                    var teamBSteal = parseInt(response.data.teamB.countSteal);
+                                    var teamAPercSteal = ((teamASteal+teamBSteal)===0)?0:$.Oda.Tooling.arrondir(teamASteal / (teamASteal + teamBSteal) * 100,2);
+                                    var teamBPercSteal = ((teamASteal+teamBSteal)===0)?0:$.Oda.Tooling.arrondir(teamBSteal / (teamASteal + teamBSteal) * 100,2);
+                                    $('#teamAPercSteal').html(teamAPercSteal + '%');
+                                    $('#teamARecapSteal').html(teamASteal+'/'+(teamASteal + teamBSteal));
+                                    $('#teamASteal').html(teamASteal);
+                                    $('#teamBPercSteal').html(teamBPercSteal + '%');
+                                    $('#teamBRecapSteal').html(teamBSteal+'/'+(teamASteal + teamBSteal));
+                                    $('#teamBSteal').html(teamBSteal);
+
+                                    if(teamASteal < teamBSteal){
+                                        $('#teamBPercSteal').addClass('statWinner');
+                                        $('#teamAPercSteal').addClass('statLooser');
+                                        $('#teamBSteal').addClass('statWinner');
+                                        $('#teamASteal').addClass('statLooser');
+                                    }else if(teamASteal > teamBSteal){
+                                        $('#teamAPercSteal').addClass('statWinner');
+                                        $('#teamBPercSteal').addClass('statLooser');
+                                        $('#teamASteal').addClass('statWinner');
+                                        $('#teamBSteal').addClass('statLooser');
+                                    }
+
+                                    //LOST
+                                    var teamALost = parseInt(response.data.teamA.countLost);
+                                    var teamBLost = parseInt(response.data.teamB.countLost);
+                                    var teamAPercLost = ((teamALost+teamBLost)===0)?0:$.Oda.Tooling.arrondir(teamALost / (teamALost + teamBLost) * 100,2);
+                                    var teamBPercLost = ((teamALost+teamBLost)===0)?0:$.Oda.Tooling.arrondir(teamBLost / (teamALost + teamBLost) * 100,2);
+                                    $('#teamAPercLost').html(teamAPercLost + '%');
+                                    $('#teamARecapLost').html(teamALost+'/'+(teamALost + teamBLost));
+                                    $('#teamALost').html(teamALost);
+                                    $('#teamBPercLost').html(teamBPercLost + '%');
+                                    $('#teamBRecapLost').html(teamBLost+'/'+(teamALost + teamBLost));
+                                    $('#teamBLost').html(teamBLost);
+
+                                    if(teamALost > teamBLost){
+                                        $('#teamBPercLost').addClass('statWinner');
+                                        $('#teamAPercLost').addClass('statLooser');
+                                        $('#teamBLost').addClass('statWinner');
+                                        $('#teamALost').addClass('statLooser');
+                                    }else if(teamALost < teamBLost){
+                                        $('#teamAPercLost').addClass('statWinner');
+                                        $('#teamBPercLost').addClass('statLooser');
+                                        $('#teamALost').addClass('statWinner');
+                                        $('#teamBLost').addClass('statLooser');
                                     }
 
                                     var teamATotalSuccess = teamAOneSuccess + teamATwoSuccess + teamATreeSuccess;
@@ -507,7 +556,11 @@
                             $('#teamAOneMissing').html(response.data.teamA.countOneMissing);
                             $('#teamAOneSuccess').html(response.data.teamA.countOneSuccess);
                             $('#teamAFault').html(response.data.teamA.countFault);
+                            $('#teamASteal').html(response.data.teamA.countSteal);
+                            $('#teamALost').html(response.data.teamA.countLost);
                             $('#teamBScore').html(response.data.teamB.score);
+                            $('#teamBSteal').html(response.data.teamB.countSteal);
+                            $('#teamBLost').html(response.data.teamB.countLost);
                             $('#teamBTwoMissing').html(response.data.teamB.countTwoMissing);
                             $('#teamBTwoSuccess').html(response.data.teamB.countTwoSuccess);
                             $('#teamBTreeMissing').html(response.data.teamB.countTreeMissing);

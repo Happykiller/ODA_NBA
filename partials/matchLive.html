@@ -1,35 +1,39 @@
 <div class="oda-container" style="margin-bottom: 10px;" id="containerTeamA">
     <div class="child">
-        <button type="button" class="btn btn-warning" id="btTeamATwoMissing" onclick="$.Oda.App.Controller.MatchLive.updateMatch({twoMissing: 1, team: 'a'})"><b>2</b> (<span id="teamATwoMissing">teamATwoMissing</span>)</button>
-        <button type="button" class="btn btn-warning" id="btTeamATreeMissing" onclick="$.Oda.App.Controller.MatchLive.updateMatch({treeMissing: 1, team: 'a'})"><b>3</b> (<span id="teamATreeMissing">teamATreeMissing</span>)</button>
-        <button type="button" class="btn btn-warning" id="btTeamAOneMissing" onclick="$.Oda.App.Controller.MatchLive.updateMatch({oneMissing: 1, team: 'a'})"><b>1</b> (<span id="teamAOneMissing">teamAOneMissing</span>)</button>
+        <button type="button" class="btn btn-warning two" id="btTeamATwoMissing" onclick="$.Oda.App.Controller.MatchLive.updateMatch({twoMissing: 1, team: 'a'})"><b>2</b> (<span id="teamATwoMissing">teamATwoMissing</span>)</button>
+        <button type="button" class="btn btn-warning tree" id="btTeamATreeMissing" onclick="$.Oda.App.Controller.MatchLive.updateMatch({treeMissing: 1, team: 'a'})"><b>3</b> (<span id="teamATreeMissing">teamATreeMissing</span>)</button>
+        <button type="button" class="btn btn-warning one" id="btTeamAOneMissing" onclick="$.Oda.App.Controller.MatchLive.updateMatch({oneMissing: 1, team: 'a'})"><b>1</b> (<span id="teamAOneMissing">teamAOneMissing</span>)</button>
     </div>
 
     <div class="child">
         <h2><b><span id="teamAScore">teamAScore</span> - <span id="teamALabel">teamA</span></b></h2>
+        <button type="button" class="btn" id="btTeamALost" onclick="$.Oda.App.Controller.MatchLive.updateMatch({lost: 1, team: 'a'})">Perte (<span id="teamALost">teamBLost</span>)</button>
         <button type="button" class="btn btn-danger" id="btTeamAFault" onclick="$.Oda.App.Controller.MatchLive.updateMatch({fault: 1, team: 'a'})">Faute (<span id="teamAFault">teamAFault</span>)</button>
+        <button type="button" class="btn btn-info" id="btTeamASteal" onclick="$.Oda.App.Controller.MatchLive.updateMatch({steal: 1, team: 'a'})">Vole (<span id="teamASteal">teamBSteal</span>)</button>
     </div>
 
     <div class="child">
-        <button type="button" class="btn btn-success" id="btTeamAOneSuccess" onclick="$.Oda.App.Controller.MatchLive.updateMatch({oneSuccess: 1, team: 'a'})">(<span id="teamAOneSuccess">teamAOneSuccess</span>) <b>1</b></button>
-        <button type="button" class="btn btn-success" id="btTeamATreeSuccess" onclick="$.Oda.App.Controller.MatchLive.updateMatch({treeSuccess: 1, team: 'a'})">(<span id="teamATreeSuccess">teamATreeSuccess</span>) <b>3</b></button>
-        <button type="button" class="btn btn-success" id="btTeamATwoSuccess" onclick="$.Oda.App.Controller.MatchLive.updateMatch({twoSuccess: 1, team: 'a'})">(<span id="teamATwoSuccess">teamATwoSuccess</span>) <b>2</b></button>
+        <button type="button" class="btn btn-success one" id="btTeamAOneSuccess" onclick="$.Oda.App.Controller.MatchLive.updateMatch({oneSuccess: 1, team: 'a'})">(<span id="teamAOneSuccess">teamAOneSuccess</span>) <b>1</b></button>
+        <button type="button" class="btn btn-success tree" id="btTeamATreeSuccess" onclick="$.Oda.App.Controller.MatchLive.updateMatch({treeSuccess: 1, team: 'a'})">(<span id="teamATreeSuccess">teamATreeSuccess</span>) <b>3</b></button>
+        <button type="button" class="btn btn-success two" id="btTeamATwoSuccess" onclick="$.Oda.App.Controller.MatchLive.updateMatch({twoSuccess: 1, team: 'a'})">(<span id="teamATwoSuccess">teamATwoSuccess</span>) <b>2</b></button>
     </div>
 </div>
 <div class="oda-container" style="margin-bottom: 10px;" id="containerTeamB">
     <div class="child">
-        <button type="button" class="btn btn-warning" id="btTeamBTwoMissing" onclick="$.Oda.App.Controller.MatchLive.updateMatch({twoMissing: 1, team: 'b'})"><b>2</b> (<span id="teamBTwoMissing">teamBTwoMissing</span>)</button>
-        <button type="button" class="btn btn-warning" id="btTeamBTreeMissing" onclick="$.Oda.App.Controller.MatchLive.updateMatch({treeMissing: 1, team: 'b'})"><b>3</b> (<span id="teamBTreeMissing">teamBTreeMissing</span>)</button>
-        <button type="button" class="btn btn-warning" id="btTeamBOneMissing" onclick="$.Oda.App.Controller.MatchLive.updateMatch({oneMissing: 1, team: 'b'})"><b>1</b> (<span id="teamBOneMissing">teamBOneMissing</span>)</button>
+        <button type="button" class="btn btn-warning two" id="btTeamBTwoMissing" onclick="$.Oda.App.Controller.MatchLive.updateMatch({twoMissing: 1, team: 'b'})"><b>2</b> (<span id="teamBTwoMissing">teamBTwoMissing</span>)</button>
+        <button type="button" class="btn btn-warning tree" id="btTeamBTreeMissing" onclick="$.Oda.App.Controller.MatchLive.updateMatch({treeMissing: 1, team: 'b'})"><b>3</b> (<span id="teamBTreeMissing">teamBTreeMissing</span>)</button>
+        <button type="button" class="btn btn-warning one" id="btTeamBOneMissing" onclick="$.Oda.App.Controller.MatchLive.updateMatch({oneMissing: 1, team: 'b'})"><b>1</b> (<span id="teamBOneMissing">teamBOneMissing</span>)</button>
     </div>
     <div class="child">
+        <button type="button" class="btn" id="btTeamBLost" onclick="$.Oda.App.Controller.MatchLive.updateMatch({lost: 1, team: 'b'})">Perte (<span id="teamBLost">teamBLost</span>)</button>
         <button type="button" class="btn btn-danger" id="btTeamBFault" onclick="$.Oda.App.Controller.MatchLive.updateMatch({fault: 1, team: 'b'})">Faute (<span id="teamBFault">teamBFault</span>)</button>
+        <button type="button" class="btn btn-info" id="btTeamBSteal" onclick="$.Oda.App.Controller.MatchLive.updateMatch({steal: 1, team: 'b'})">Vole (<span id="teamBSteal">teamBSteal</span>)</button>
         <h2><b><span id="teamBLabel">teamBLabel</span> - <span id="teamBScore">teamBScore</span></b></h2>
     </div>
     <div class="child">
-        <button type="button" class="btn btn-success" id="btTeamBOneSuccess" onclick="$.Oda.App.Controller.MatchLive.updateMatch({oneSuccess: 1, team: 'b'})">(<span id="teamBOneSuccess">teamBOneSuccess</span>) <b>1</b></button>
-        <button type="button" class="btn btn-success" id="btTeamBTreeSuccess" onclick="$.Oda.App.Controller.MatchLive.updateMatch({treeSuccess: 1, team: 'b'})">(<span id="teamBTreeSuccess">teamBTreeSuccess</span>) <b>3</b></button>
-        <button type="button" class="btn btn-success" id="btTeamBTwoSuccess" onclick="$.Oda.App.Controller.MatchLive.updateMatch({twoSuccess: 1, team: 'b'})">(<span id="teamBTwoSuccess">teamBTwoSuccess</span>) <b>2</b></button>
+        <button type="button" class="btn btn-success one" id="btTeamBOneSuccess" onclick="$.Oda.App.Controller.MatchLive.updateMatch({oneSuccess: 1, team: 'b'})">(<span id="teamBOneSuccess">teamBOneSuccess</span>) <b>1</b></button>
+        <button type="button" class="btn btn-success tree" id="btTeamBTreeSuccess" onclick="$.Oda.App.Controller.MatchLive.updateMatch({treeSuccess: 1, team: 'b'})">(<span id="teamBTreeSuccess">teamBTreeSuccess</span>) <b>3</b></button>
+        <button type="button" class="btn btn-success two" id="btTeamBTwoSuccess" onclick="$.Oda.App.Controller.MatchLive.updateMatch({twoSuccess: 1, team: 'b'})">(<span id="teamBTwoSuccess">teamBTwoSuccess</span>) <b>2</b></button>
     </div>
 </div>
 <div style="text-align: center;">
@@ -38,11 +42,24 @@
 </div>
 
 <style>
+    .btn {
+        border-color: #2c3e50;
+    }
+    .one {
+        color:#8e44ad;
+    }
+    .two {
+        color:#2c3e50;
+    }
+    .tree {
+        color:#c0392b;
+    }
     .oda-container {
         display: table;
         width: 100%;
     }
     .child {
+        padding: 10px;
         display: table-cell;
         vertical-align: middle;
         text-align: center;

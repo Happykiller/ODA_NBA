@@ -46,9 +46,7 @@ class MatchInterface extends OdaRestInterface {
 
             $this->addDataObject($retour->data->data);
         } catch (Exception $ex) {
-            $this->object_retour->strErreur = $ex.'';
-            $this->object_retour->statut = self::STATE_ERROR;
-            die();
+            $this->dieInError($ex.'');
         }
     }
 
@@ -71,9 +69,7 @@ class MatchInterface extends OdaRestInterface {
 
             $this->addDataObject($retour->data);
         } catch (Exception $ex) {
-            $this->object_retour->strErreur = $ex.'';
-            $this->object_retour->statut = self::STATE_ERROR;
-            die();
+            $this->dieInError($ex.'');
         }
     }
 
@@ -106,9 +102,7 @@ class MatchInterface extends OdaRestInterface {
             $params->value = $retour->data;
             $this->addDataStr($params);
         } catch (Exception $ex) {
-            $this->object_retour->strErreur = $ex.'';
-            $this->object_retour->statut = self::STATE_ERROR;
-            die();
+            $this->dieInError($ex.'');
         }
     }
 
@@ -127,12 +121,15 @@ class MatchInterface extends OdaRestInterface {
                     `treeSuccess`,
                     `oneMissing`,
                     `oneSuccess`,
-                    `fault`
+                    `fault`,
+                    `lost`,
+                    `steal`
                 )
                 VALUES (
-                    :matchId, :team, NOW(), :twoMissing, :twoSuccess, :treeMissing, :treeSuccess, :oneMissing, :oneSuccess, :fault
+                    :matchId, :team, NOW(), :twoMissing, :twoSuccess, :treeMissing, :treeSuccess, :oneMissing, :oneSuccess, :fault, :lost, :steal
                 )
             ;";
+
             $params->bindsValue = [
                 "matchId" => $this->inputs["matchId"],
                 "team" => $this->inputs["team"],
@@ -142,18 +139,37 @@ class MatchInterface extends OdaRestInterface {
                 "treeSuccess" => $this->inputs["treeSuccess"],
                 "oneMissing" => $this->inputs["oneMissing"],
                 "oneSuccess" => $this->inputs["oneSuccess"],
-                "fault" => $this->inputs["fault"]
+                "fault" => $this->inputs["fault"],
+                "steal" => $this->inputs["steal"],
+                "lost" => $this->inputs["lost"]
             ];
             $params->typeSQL = OdaLibBd::SQL_INSERT_ONE;
-            $retour = $this->BD_ENGINE->reqODASQL($params);
+            $retourFirstTeam = $this->BD_ENGINE->reqODASQL($params);
+
+            if($this->inputs["steal"]){
+                $params->bindsValue = [
+                    "matchId" => $this->inputs["matchId"],
+                    "team" => ($this->inputs["team"] == "a")?"b":"a",
+                    "twoMissing" => $this->inputs["twoMissing"],
+                    "twoSuccess" => $this->inputs["twoSuccess"],
+                    "treeMissing" => $this->inputs["treeMissing"],
+                    "treeSuccess" => $this->inputs["treeSuccess"],
+                    "oneMissing" => $this->inputs["oneMissing"],
+                    "oneSuccess" => $this->inputs["oneSuccess"],
+                    "fault" => $this->inputs["fault"],
+                    "steal" => 0,
+                    "lost" => 1
+                ];
+                $params->typeSQL = OdaLibBd::SQL_INSERT_ONE;
+                $retour = $this->BD_ENGINE->reqODASQL($params);
+            }
 
             $params = new stdClass();
-            $params->value = $retour->data;
+            $params->value = $retourFirstTeam->data;
             $this->addDataStr($params);
+
         } catch (Exception $ex) {
-            $this->object_retour->strErreur = $ex.'';
-            $this->object_retour->statut = self::STATE_ERROR;
-            die();
+            $this->dieInError($ex.'');
         }
     }
 
@@ -178,9 +194,7 @@ class MatchInterface extends OdaRestInterface {
             $params->value = $retour->data;
             $this->addDataStr($params);
         } catch (Exception $ex) {
-            $this->object_retour->strErreur = $ex.'';
-            $this->object_retour->statut = self::STATE_ERROR;
-            die();
+            $this->dieInError($ex.'');
         }
     }
 
@@ -196,6 +210,8 @@ class MatchInterface extends OdaRestInterface {
                 IFNULL(SUM(a.`oneMissing`),0) as 'countOneMissing',
                 IFNULL(SUM(a.`oneSuccess`),0) as 'countOneSuccess',
                 IFNULL(SUM(a.`fault`),0) as 'countFault',
+                IFNULL(SUM(a.`lost`),0) as 'countLost',
+                IFNULL(SUM(a.`steal`),0) as 'countSteal',
                 IFNULL((SUM(a.`twoSuccess`)*2 + SUM(a.`treeSuccess`)*3 + SUM(a.`oneSuccess`)),0) as 'score'
                 FROM `tab_match_events` a
                 WHERE 1=1
@@ -231,9 +247,7 @@ class MatchInterface extends OdaRestInterface {
             $params->value = $retour->data;
             $this->addDataObject($params);
         } catch (Exception $ex) {
-            $this->object_retour->strErreur = $ex.'';
-            $this->object_retour->statut = self::STATE_ERROR;
-            die();
+            $this->dieInError($ex.'');
         }
     }
 }

@@ -63,7 +63,7 @@ $slim->get('/match/:id/report/recap/', function ($id) use ($slim) {
 $slim->post('/match/event/', function () use ($slim) {
     $params = new OdaPrepareInterface();
     $params->arrayInput = array("matchId","team");
-    $params->arrayInputOpt = array("twoMissing"=>0,"twoSuccess"=>0,"treeMissing"=>0,"treeSuccess"=>0,"oneMissing"=>0,"oneSuccess"=>0,"fault"=>0);
+    $params->arrayInputOpt = array("twoMissing"=>0,"twoSuccess"=>0,"treeMissing"=>0,"treeSuccess"=>0,"oneMissing"=>0,"oneSuccess"=>0,"fault"=>0,"lost"=>0,"steal"=>0);
     $params->modePublic = false;
     $params->slim = $slim;
     $INTERFACE = new MatchInterface($params);
