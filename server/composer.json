@@ -10,7 +10,7 @@
     }
   ],
   "require": {
-    "happykiller/oda": "@dev"
+    "atbq/oda": "1.0.x"
   },
   "autoload": {
     "psr-4": { "Nba\\": "class" }
