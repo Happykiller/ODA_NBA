@@ -2,9 +2,9 @@
 
 namespace Nba;
 
-require '../../header.php';
-require "../../vendor/autoload.php";
-require '../../config/config.php';
+require '../header.php';
+require "../vendor/autoload.php";
+require '../config/config.php';
 
 use cebe\markdown\GithubMarkdown;
 use Slim\Slim;

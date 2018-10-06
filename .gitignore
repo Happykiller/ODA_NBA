@@ -18,3 +18,4 @@ server/resources/
 server/resources/*
 *.iml
 server/composer.lock
+server/.htaccess
