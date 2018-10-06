@@ -2,22 +2,30 @@
     <div id="divMatchs">
         <oda-loading></oda-loading>
     </div>
-    <button type="button" oda-label="oda-main.new" onclick="$.Oda.App.Controller.Match.formMatch();" class="btn btn-primary">oda-main.new</button>
+    <oda-btn oda-label="oda-main.new" onclick="$.Oda.App.Controller.Match.formMatch();" class="btn btn-primary">oda-main.new</button>
 </div>
 
 <script id="formMatch" type="text/template">
     <div class="row">
         <div class="col-md-6">
-            <div class="form-group">
-                <label for="teamA" oda-label="match.teamA">match.teamA</label>
-                <input required type="text" class="form-control" oda-input-text="teamA" oda-input-text-tips="match.teamA-tips" oda-input-text-placeholder="match.teamA-placeholder" oda-input-text-check="Oda.Regexs:noInjection">
-            </div>
+            <oda-input-text
+                oda-input-text-name="teamA"
+                oda-input-text-type="text"
+                oda-input-text-label="match.teamA"
+                oda-input-text-tips="match.teamA-tips"
+                oda-input-text-placeholder="match.teamA-placeholder"
+                oda-input-text-check="Oda.Regexs:noInjection"
+                required/>
         </div>
         <div class="col-md-6">
-            <div class="form-group">
-                <label for="teamB" oda-label="match.teamB">match.teamB</label>
-                <input required type="text" class="form-control" oda-input-text="teamB" oda-input-text-tips="match.teamB-tips" oda-input-text-placeholder="match.teamB-placeholder" oda-input-text-check="Oda.Regexs:noInjection">
-            </div>
+            <oda-input-text
+                oda-input-text-name="teamB"
+                oda-input-text-type="text"
+                oda-input-text-label="match.teamB"
+                oda-input-text-tips="match.teamB-tips"
+                oda-input-text-placeholder="match.teamB-placeholder"
+                oda-input-text-check="Oda.Regexs:noInjection"
+                required/>
         </div>
     </div>
     <div class="row">

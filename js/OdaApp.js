@@ -241,7 +241,7 @@
                             name: "createMatch",
                             label: $.Oda.I8n.get('match','createMatch'),
                             details: strHtml,
-                            footer: '<button type="button" oda-label="oda-main.bt-submit" oda-submit="submit" onclick="$.Oda.App.Controller.Match.submitMatch();" class="btn btn-primary disabled" disabled>Submit</button >',
+                            footer: '<oda-btn oda-btn-name="submit" oda-btn-style="primary" oda-btn-enter="1" oda-btn-icon-before="ok" oda-btn-icon-after="ok" oda-btn-click="$.Oda.App.Controller.Match.submitMatch();" disabled>oda-main.bt-submit</oda-btn>',
                             callback: function(){
                                 $('.selectpicker').selectpicker();
 
@@ -250,11 +250,9 @@
                                     listElt: ["teamA","teamB"],
                                     function: function(e){
                                         if( ($("#teamA").data("isOk")) && ($("#teamB").data("isOk")) ){
-                                            $("#submit").removeClass("disabled");
-                                            $("#submit").removeAttr("disabled");
+                                            $('#submit').btEnable();
                                         }else{
-                                            $("#submit").addClass("disabled");
-                                            $("#submit").attr("disabled", true);
+                                            $('#submit').btDisable();
                                         }
                                     }
                                 });
