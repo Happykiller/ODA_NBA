@@ -20,7 +20,7 @@
      * @desc Initialize
      */
     function _init() {
-        $.Oda.Event.addListener({name : "oda-fully-loaded", callback : function(e){
+        $.Oda.Event.addListener({name: "oda-fully-loaded", callback : function(e){
             $.Oda.App.startApp();
         }});
     }
@@ -36,45 +36,45 @@
         startApp: function () {
             try {
                 $.Oda.Router.addRoute("home", {
-                    "path" : "partials/home.html",
-                    "title" : "oda-main.home-title",
-                    "urls" : ["","home"],
-                    "middleWares":["support","auth"],
-                    "dependencies" : ["dataTables"]
+                    path: "partials/home.html",
+                    title: "oda-main.home-title",
+                    urls: ["","home"],
+                    middleWares: ["support","auth"],
+                    dependencies: ["dataTables"]
                 });
 
                 $.Oda.Router.addRoute("match", {
-                    "path" : "partials/match.html",
-                    "title" : "match.title",
-                    "urls" : ["match"],
-                    "middleWares" : ["support","auth"],
-                    "dependencies" : ["dataTables"]
+                    path: "partials/match.html",
+                    title: "match.title",
+                    urls: ["match"],
+                    middleWares: ["support","auth"],
+                    dependencies: ["dataTables"]
                 });
 
                 $.Oda.Router.addRoute("matchLive", {
-                    "path" : "partials/matchLive.html",
-                    "title" : "match.title",
-                    "urls" : ["matchLive"],
-                    "middleWares" : ["support","auth"]
+                    path: "partials/matchLive.html",
+                    title: "match.title",
+                    urls: ["matchLive"],
+                    middleWares: ["support","auth"]
                 });
 
                 $.Oda.Router.startRooter();
 
                 return this;
             } catch (er) {
-                $.Oda.Log.error("$.Oda.App.startApp : " + er.message);
+                $.Oda.Log.error("$.Oda.App.startApp: " + er.message);
                 return null;
             }
         },
 
-        "Controller" : {
-            "Home": {
+        Controller : {
+            Home: {
                 /**
                  * @returns {$.Oda.App.Controller.Home}
                  */
                 start: function () {
                     try {
-                        var call = $.Oda.Interface.callRest($.Oda.Context.rest+"api/rest/match/", {callback : function(response){
+                        $.Oda.Interface.callRest($.Oda.Context.rest+"api/rest/match/", {callback: function(response){
                             $.Oda.Display.Table.createDataTable({
                                 target: 'divMatchs',
                                 data: response.data,
@@ -150,12 +150,12 @@
                         }});
                         return this;
                     } catch (er) {
-                        $.Oda.Log.error("$.Oda.App.Controller.Home.start : " + er.message);
+                        $.Oda.Log.error("$.Oda.App.Controller.Home.start: " + er.message);
                         return null;
                     }
                 }
             },
-            "Match": {
+            Match: {
                 /**
                  * @returns {$.Oda.App.Controller.Match}
                  */
@@ -229,33 +229,31 @@
                         }});
                         return this;
                     } catch (er) {
-                        $.Oda.Log.error("$.Oda.App.Controller.Match : " + er.message);
+                        $.Oda.Log.error("$.Oda.App.Controller.Match: " + er.message);
                         return null;
                     }
                 },
                 /**
                  * @returns {$.Oda.App.Controller.Match}
                  */
-                formMatch : function () {
+                formMatch: function () {
                     try {
                         var strHtml = $.Oda.Display.TemplateHtml.create({
-                            template : "formMatch"
-                            , scope : {
-                            }
+                            template: "formMatch"
                         });
 
                         $.Oda.Display.Popup.open({
-                            "name" : "createMatch",
-                            "label" : $.Oda.I8n.get('match','createMatch'),
-                            "details" : strHtml,
-                            "footer" : '<button type="button" oda-label="oda-main.bt-submit" oda-submit="submit" onclick="$.Oda.App.Controller.Match.submitMatch();" class="btn btn-primary disabled" disabled>Submit</button >',
-                            "callback" : function(){
+                            name: "createMatch",
+                            label: $.Oda.I8n.get('match','createMatch'),
+                            details: strHtml,
+                            footer: '<button type="button" oda-label="oda-main.bt-submit" oda-submit="submit" onclick="$.Oda.App.Controller.Match.submitMatch();" class="btn btn-primary disabled" disabled>Submit</button >',
+                            callback: function(){
                                 $('.selectpicker').selectpicker();
 
                                 $.Oda.Scope.Gardian.add({
-                                    id : "createMatch",
-                                    listElt : ["teamA","teamB"],
-                                    function : function(e){
+                                    id: "createMatch",
+                                    listElt: ["teamA","teamB"],
+                                    function: function(e){
                                         if( ($("#teamA").data("isOk")) && ($("#teamB").data("isOk")) ){
                                             $("#submit").removeClass("disabled");
                                             $("#submit").removeAttr("disabled");
@@ -269,14 +267,14 @@
                         });
                         return this;
                     } catch (er) {
-                        $.Oda.Log.error("$.Oda.App.Controller.Match.formMatch : " + er.message);
+                        $.Oda.Log.error("$.Oda.App.Controller.Match.formMatch: " + er.message);
                         return null;
                     }
                 },
                 /**
                  * @returns {$.Oda.App.Controller.Match}
                  */
-                submitMatch : function () {
+                submitMatch: function () {
                     try {
                         var call = $.Oda.Interface.callRest($.Oda.Context.rest+"api/rest/match/", {type: 'POST', callback : function(response){
                             $.Oda.Display.Popup.close({name: 'createMatch'});
@@ -289,7 +287,7 @@
                         });
                         return this;
                     } catch (er) {
-                        $.Oda.Log.error("$.Oda.App.Controller.Match.submitMatch : " + er.message);
+                        $.Oda.Log.error("$.Oda.App.Controller.Match.submitMatch: " + er.message);
                         return null;
                     }
                 },
@@ -303,10 +301,10 @@
                  * @param p_params.colorB
                  * @returns {$.Oda.App.Controller.Match}
                  */
-                seeStats : function (p_params) {
+                seeStats: function (p_params) {
                     try {
                         var strHtml = $.Oda.Display.TemplateHtml.create({
-                            template : "templateStats"
+                            template: "templateStats"
                             , scope : {
                                 teamA: p_params.teamA,
                                 colorA: p_params.colorA,
@@ -316,7 +314,7 @@
                         });
 
                         $.Oda.Display.Popup.open({
-                            "name" : "modalStats",
+                            "name": "modalStats",
                             "label" : 'N°'+p_params.id+' '+p_params.teamA+' VS '+p_params.teamB+' ('+$.Oda.Date.getStrDateTimeFrFromUs(p_params.date)+')',
                             "details" : strHtml,
                             "callback" : function(){
@@ -515,12 +513,12 @@
                         });
                         return this;
                     } catch (er) {
-                        $.Oda.Log.error("$.Oda.App.Controller.Match.seeStats : " + er.message);
+                        $.Oda.Log.error("$.Oda.App.Controller.Match.seeStats: " + er.message);
                         return null;
                     }
                 },
             },
-            "MatchLive": {
+            MatchLive: {
                 currentMatchId: 0,
                 /**
                  * @returns {$.Oda.App.Controller.MatchLive}
@@ -538,14 +536,14 @@
                         this.displayMatch();
                         return this;
                     } catch (er) {
-                        $.Oda.Log.error("$.Oda.App.Controller.Home.MatchLive : " + er.message);
+                        $.Oda.Log.error("$.Oda.App.Controller.Home.MatchLive: " + er.message);
                         return null;
                     }
                 },
                 /**
                  * @returns {$.Oda.App.Controller.MatchLive}
                  */
-                displayMatch : function () {
+                displayMatch: function () {
                     try {
                         var call = $.Oda.Interface.callRest($.Oda.Context.rest+"api/rest/match/"+this.currentMatchId+"/report/recap/", {callback : function(response){
                             $('#teamAScore').html(response.data.teamA.score);
@@ -571,14 +569,14 @@
                         }});
                         return this;
                     } catch (er) {
-                        $.Oda.Log.error("$.Oda.App.Controller.MatchLive.displayMatch : " + er.message);
+                        $.Oda.Log.error("$.Oda.App.Controller.MatchLive.displayMatch: " + er.message);
                         return null;
                     }
                 },
                 /**
                  * @returns {$.Oda.App.Controller.MatchLive}
                  */
-                resize : function () {
+                resize: function () {
                     try {
                         var bt = $('#resize');
                         if(bt.hasClass('glyphicon-resize-small')){
@@ -598,7 +596,7 @@
                         }
                         return this;
                     } catch (er) {
-                        $.Oda.Log.error("$.Oda.App.Controller.MatchLive.resize : " + er.message);
+                        $.Oda.Log.error("$.Oda.App.Controller.MatchLive.resize: " + er.message);
                         return null;
                     }
                 },
@@ -607,7 +605,7 @@
                  * @param p_params.?
                  * @returns {$.Oda.App.Controller.MatchLive}
                  */
-                updateMatch : function (p_params) {
+                updateMatch: function (p_params) {
                     try {
                         p_params.matchId = this.currentMatchId;
                         var call = $.Oda.Interface.callRest($.Oda.Context.rest+"api/rest/match/event/", {type: 'POST', callback: function(response){
@@ -615,21 +613,21 @@
                         }},p_params);
                         return this;
                     } catch (er) {
-                        $.Oda.Log.error("$.Oda.App.Controller.MatchLive.updateMatch : " + er.message);
+                        $.Oda.Log.error("$.Oda.App.Controller.MatchLive.updateMatch: " + er.message);
                         return null;
                     }
                 },
                 /**
                  * @returns {$.Oda.App.Controller.MatchLive}
                  */
-                undo : function () {
+                undo: function () {
                     try {
                         var call = $.Oda.Interface.callRest($.Oda.Context.rest+"api/rest/match/"+this.currentMatchId+"/event/", {type: 'DELETE', callback: function(response){
                             $.Oda.App.Controller.MatchLive.displayMatch();
                         }});
                         return this;
                     } catch (er) {
-                        $.Oda.Log.error("$.Oda.App.Controller.MatchLive.undo : " + er.message);
+                        $.Oda.Log.error("$.Oda.App.Controller.MatchLive.undo: " + er.message);
                         return null;
                     }
                 },
