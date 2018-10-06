@@ -36,25 +36,20 @@
         startApp: function () {
             try {
                 $.Oda.Router.addRoute("home", {
-                    path: "partials/home.html",
-                    title: "oda-main.home-title",
+                    title: "home.title",
                     urls: ["","home"],
                     middleWares: ["support","auth"],
                     dependencies: ["dataTables"]
                 });
 
                 $.Oda.Router.addRoute("match", {
-                    path: "partials/match.html",
                     title: "match.title",
-                    urls: ["match"],
                     middleWares: ["support","auth"],
                     dependencies: ["dataTables"]
                 });
 
                 $.Oda.Router.addRoute("matchLive", {
-                    path: "partials/matchLive.html",
                     title: "match.title",
-                    urls: ["matchLive"],
                     middleWares: ["support","auth"]
                 });
 

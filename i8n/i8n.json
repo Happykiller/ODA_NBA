@@ -1,32 +1,25 @@
 [
   {
-    "groupName" : "home",
-    "fr" : {
-      "title" : "Accueil",
-      "hello" : "Bonjour avec le FrameWork Oda"
-    },
-    "en" : {
-      "title" : "Home",
-      "hello" : "Hello with Oda FrameWork"
+    "groupName": "home",
+    "fr": {
+      "title": "Accueil",
+      "hello": "Bonjour avec le FrameWork Oda"
     }
   },
   {
-    "groupName" : "match",
-    "fr" : {
-      "title" : "Match",
+    "groupName": "match",
+    "fr": {
+      "title": "Match",
       "teamA": "TeamA",
       "teamB": "TeamB",
       "createMatch": "Créer un match",
       "color": "Couleur"
-    },
-    "en" : {
-      "title" : "Match"
     }
   },
   {
-    "groupName" : "matchLive",
-    "fr" : {
-      "select" : "Selectionner"
+    "groupName": "matchLive",
+    "fr": {
+      "select": "Selectionner"
     }
   }
 ]
