@@ -69,7 +69,7 @@
                  */
                 start: function () {
                     try {
-                        $.Oda.Interface.callRest($.Oda.Context.rest+"api/rest/match/", {callback: function(response){
+                        $.Oda.Interface.callRest($.Oda.Context.rest+"api/match/", {callback: function(response){
                             $.Oda.Display.Table.createDataTable({
                                 target: 'divMatchs',
                                 data: response.data,
@@ -156,7 +156,7 @@
                  */
                 start: function () {
                     try {
-                        var call = $.Oda.Interface.callRest($.Oda.Context.rest+"api/rest/match/", {callback : function(response){
+                        var call = $.Oda.Interface.callRest($.Oda.Context.rest+"api/match/", {callback : function(response){
                             $.Oda.Display.Table.createDataTable({
                                 target: 'divMatchs',
                                 data: response.data,
@@ -271,7 +271,7 @@
                  */
                 submitMatch: function () {
                     try {
-                        var call = $.Oda.Interface.callRest($.Oda.Context.rest+"api/rest/match/", {type: 'POST', callback : function(response){
+                        var call = $.Oda.Interface.callRest($.Oda.Context.rest+"api/match/", {type: 'POST', callback : function(response){
                             $.Oda.Display.Popup.close({name: 'createMatch'});
                             $.Oda.App.Controller.Match.start();
                         }},{
@@ -313,7 +313,7 @@
                             "label" : 'N°'+p_params.id+' '+p_params.teamA+' VS '+p_params.teamB+' ('+$.Oda.Date.getStrDateTimeFrFromUs(p_params.date)+')',
                             "details" : strHtml,
                             "callback" : function(){
-                                var call = $.Oda.Interface.callRest($.Oda.Context.rest+"api/rest/match/"+p_params.id+"/report/recap/", {callback : function(response){
+                                var call = $.Oda.Interface.callRest($.Oda.Context.rest+"api/match/"+p_params.id+"/report/recap/", {callback : function(response){
 
                                     var teamAOneSuccess = parseInt(response.data.teamA.countOneSuccess);
                                     var teamAOneMissing = parseInt(response.data.teamA.countOneMissing);
@@ -522,7 +522,7 @@
                     try {
                         this.currentMatchId = $.Oda.Router.current.args.id;
 
-                        var call = $.Oda.Interface.callRest($.Oda.Context.rest+"api/rest/match/"+this.currentMatchId, {callback : function(response){
+                        var call = $.Oda.Interface.callRest($.Oda.Context.rest+"api/match/"+this.currentMatchId, {callback : function(response){
                             $('#teamALabel').html(response.data.teamA);
                             $('#teamBLabel').html(response.data.teamB);
                             $('#containerTeamA').addClass('bg-'+response.data.colorA);
@@ -540,7 +540,7 @@
                  */
                 displayMatch: function () {
                     try {
-                        var call = $.Oda.Interface.callRest($.Oda.Context.rest+"api/rest/match/"+this.currentMatchId+"/report/recap/", {callback : function(response){
+                        var call = $.Oda.Interface.callRest($.Oda.Context.rest+"api/match/"+this.currentMatchId+"/report/recap/", {callback : function(response){
                             $('#teamAScore').html(response.data.teamA.score);
                             $('#teamATwoMissing').html(response.data.teamA.countTwoMissing);
                             $('#teamATwoSuccess').html(response.data.teamA.countTwoSuccess);
@@ -603,7 +603,7 @@
                 updateMatch: function (p_params) {
                     try {
                         p_params.matchId = this.currentMatchId;
-                        var call = $.Oda.Interface.callRest($.Oda.Context.rest+"api/rest/match/event/", {type: 'POST', callback: function(response){
+                        var call = $.Oda.Interface.callRest($.Oda.Context.rest+"api/match/event/", {type: 'POST', callback: function(response){
                             $.Oda.App.Controller.MatchLive.displayMatch();
                         }},p_params);
                         return this;
@@ -617,7 +617,7 @@
                  */
                 undo: function () {
                     try {
-                        var call = $.Oda.Interface.callRest($.Oda.Context.rest+"api/rest/match/"+this.currentMatchId+"/event/", {type: 'DELETE', callback: function(response){
+                        var call = $.Oda.Interface.callRest($.Oda.Context.rest+"api/match/"+this.currentMatchId+"/event/", {type: 'DELETE', callback: function(response){
                             $.Oda.App.Controller.MatchLive.displayMatch();
                         }});
                         return this;
