@@ -13,13 +13,28 @@
       "teamA": "TeamA",
       "teamB": "TeamB",
       "createMatch": "Créer un match",
-      "color": "Couleur"
+      "color": "Couleur",
+      "team-tips": "Nom de l'équipe",
+      "team-placeholder": "Nom de l'équipe"
     }
   },
   {
     "groupName": "matchLive",
     "fr": {
       "select": "Selectionner"
+    }
+  },
+  {
+    "groupName": "menu",
+    "fr": {
+      "match": "Match",
+      "matchLive": "Live"
+    }
+  },
+  {
+    "groupName": "global",
+    "fr": {
+      "new": "Nouveau"
     }
   }
 ]

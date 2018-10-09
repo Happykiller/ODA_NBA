@@ -2,7 +2,7 @@
     <div id="divMatchs">
         <oda-loading></oda-loading>
     </div>
-    <oda-btn oda-label="oda-main.new" onclick="$.Oda.App.Controller.Match.formMatch();" class="btn btn-primary">oda-main.new</button>
+    <oda-btn oda-btn-style="primary" oda-btn-icon-before="plus" oda-btn-click="$.Oda.App.Controller.Match.formMatch();">global.new</oda-btn>
 </div>
 
 <script id="formMatch" type="text/template">
@@ -12,26 +12,14 @@
                 oda-input-text-name="teamA"
                 oda-input-text-type="text"
                 oda-input-text-label="match.teamA"
-                oda-input-text-tips="match.teamA-tips"
-                oda-input-text-placeholder="match.teamA-placeholder"
+                oda-input-text-tips="match.team-tips"
+                oda-input-text-placeholder="match.team-placeholder"
                 oda-input-text-check="Oda.Regexs:noInjection"
                 required/>
         </div>
-        <div class="col-md-6">
-            <oda-input-text
-                oda-input-text-name="teamB"
-                oda-input-text-type="text"
-                oda-input-text-label="match.teamB"
-                oda-input-text-tips="match.teamB-tips"
-                oda-input-text-placeholder="match.teamB-placeholder"
-                oda-input-text-check="Oda.Regexs:noInjection"
-                required/>
-        </div>
-    </div>
-    <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label for="colorA" oda-label="match.color">match.color</label>
+                <label for="colorA"><oda-label oda-label-value="match.color"/></label>
                 <select id="colorA" class="selectpicker"><option data-content="<span class='label bg-turquoise'>Turquoise</span>" value="turquoise"></option>
                     <option data-content="<span class='label bg-emerald'>emerald</span>" value="emerald"></option>
                     <option data-content="<span class='label bg-peter_river'>peter_river</span>" value="peter_river"></option>
@@ -53,12 +41,23 @@
                     <option data-content="<span class='label bg-sliver'>sliver</span>" value="sliver"></option>
                     <option data-content="<span class='label bg-asbestos'>asbestos</span>" value="asbestos"></option>
                 </select>
-
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <oda-input-text
+                oda-input-text-name="teamB"
+                oda-input-text-type="text"
+                oda-input-text-label="match.teamB"
+                oda-input-text-tips="match.team-tips"
+                oda-input-text-placeholder="match.team-placeholder"
+                oda-input-text-check="Oda.Regexs:noInjection"
+                required/>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label for="colorB" oda-label="match.color">match.color</label>
+                <label for="colorB"><oda-label oda-label-value="match.color"/></label>
                 <select id="colorB"  class="selectpicker"><option data-content="<span class='label bg-turquoise'>Turquoise</span>" value="turquoise"></option>
                     <option data-content="<span class='label bg-emerald'>emerald</span>" value="emerald"></option>
                     <option data-content="<span class='label bg-peter_river'>peter_river</span>" value="peter_river"></option>

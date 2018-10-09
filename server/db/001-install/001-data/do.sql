@@ -1,31 +1,31 @@
 SET FOREIGN_KEY_CHECKS=0;
 -- --------------------------------------------------------
 
-INSERT INTO `@prefix@api_tab_menu` (`Description`, `Description_courte`, `id_categorie`, `Lien`) VALUES ('match.title', 'match.title', '3', 'match');
+INSERT INTO `api_tab_menu` (`Description`, `Description_courte`, `id_categorie`, `Lien`) VALUES ('menu.match', 'menu.match', '3', 'match');
 
-UPDATE `@prefix@api_tab_menu_rangs_droit` a
-  INNER JOIN `@prefix@api_tab_menu` b
+UPDATE `api_tab_menu_rangs_droit` a
+  INNER JOIN `api_tab_menu` b
     ON b.`Lien` = 'match'
-  INNER JOIN `@prefix@api_tab_rangs` c
+  INNER JOIN `api_tab_rangs` c
     ON c.`id` = a.`id_rang`
        AND c.`indice` in (1,10,20,30)
 SET `id_menu` = concat(`id_menu`,b.`id`,';');
 
-INSERT INTO `@prefix@api_tab_menu` (`Description`, `Description_courte`, `id_categorie`, `Lien`) VALUES ('match.title', 'match.title', '98', 'matchLive');
+INSERT INTO `api_tab_menu` (`Description`, `Description_courte`, `id_categorie`, `Lien`) VALUES ('menu.matchLive', 'menu.matchLive', '98', 'matchLive');
 
-UPDATE `@prefix@api_tab_menu_rangs_droit` a
-  INNER JOIN `@prefix@api_tab_menu` b
+UPDATE `api_tab_menu_rangs_droit` a
+  INNER JOIN `api_tab_menu` b
     ON b.`Lien` = 'matchLive'
-  INNER JOIN `@prefix@api_tab_rangs` c
+  INNER JOIN `api_tab_rangs` c
     ON c.`id` = a.`id_rang`
        AND c.`indice` in (1,10,20,30)
 SET `id_menu` = concat(`id_menu`,b.`id`,';');
 
 --
--- Structure de la table `@prefix@tab_matchs`
+-- Structure de la table `tab_matchs`
 --
 
-CREATE TABLE IF NOT EXISTS `@prefix@tab_matchs` (
+CREATE TABLE IF NOT EXISTS `tab_matchs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `teamA` varchar(250) NOT NULL,
   `teamB` varchar(250) NOT NULL,
@@ -36,10 +36,10 @@ CREATE TABLE IF NOT EXISTS `@prefix@tab_matchs` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `@prefix@tab_match_events`
+-- Structure de la table `tab_match_events`
 --
 
-CREATE TABLE IF NOT EXISTS `@prefix@tab_match_events` (
+CREATE TABLE IF NOT EXISTS `tab_match_events` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `matchId` int(11) NOT NULL,
   `team` varchar(1) NOT NULL,
@@ -60,10 +60,10 @@ CREATE TABLE IF NOT EXISTS `@prefix@tab_match_events` (
 --
 
 --
--- Contraintes pour la table `@prefix@tab_match_events`
+-- Contraintes pour la table tab_match_events`
 --
-ALTER TABLE `@prefix@tab_match_events`
-ADD CONSTRAINT `fkEventMatch` FOREIGN KEY (`matchId`) REFERENCES `@prefix@tab_matchs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `tab_match_events`
+ADD CONSTRAINT `fkEventMatch` FOREIGN KEY (`matchId`) REFERENCES `tab_matchs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- --------------------------------------------------------
 SET FOREIGN_KEY_CHECKS=1;

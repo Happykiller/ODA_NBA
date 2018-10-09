@@ -1,6 +1,6 @@
 {
-  "name": "happykiller/amapk",
-  "description": "Service de gestion de'AMAP",
+  "name": "happykiller/nba",
+  "description": "Service de saisie pour statistique Basket",
   "minimum-stability": "stable",
   "license": "MIT",
   "authors": [
